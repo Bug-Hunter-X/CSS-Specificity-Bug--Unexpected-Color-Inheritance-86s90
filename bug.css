@@ -1,0 +1,22 @@
+The following CSS code snippet demonstrates an uncommon error related to specificity and inheritance:
+
+```css
+div {
+  color: blue;
+}
+
+p {
+  color: red;
+}
+
+div p {
+  color: green; /* This rule is intended to override the others */
+}
+
+/* However, due to specificity, only the selector with highest specificity will apply */
+div > p {
+  color: purple; /* This rule has higher specificity and overrides the previous */
+}
+```
+
+The issue arises from the specificity of CSS selectors.  The `div p` selector is less specific than the `div > p` selector. The `>` (child combinator) increases the specificity, making `div > p` win. This might lead to unexpected results if the developer expects `div p` to override `div`'s color.
